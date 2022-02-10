@@ -34,6 +34,12 @@ android {
     buildFeatures {
         viewBinding true
     }
+    buildTypes.each {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("weather_key.properties").newDataInputStream())
+        def weather_key = properties.getProperty("weather_key", "")
+        it.buildConfigField "String", "weather_key", weather_key
+    }
 }
 
 dependencies {
