@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WeatherTogether</string>
+    <string name="title_main">Main Fragment</string>
+    <string name="title_search">Fragment Search</string>
 </resources>
