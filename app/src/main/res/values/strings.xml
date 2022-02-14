@@ -2,4 +2,6 @@
     <string name="app_name">WeatherTogether</string>
     <string name="title_main">Main Fragment</string>
     <string name="title_search">Fragment Search</string>
+    <string name="today">Today</string>
+    <string name="unknown">Unknown</string>
 </resources>
