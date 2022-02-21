@@ -2,7 +2,9 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id "androidx.navigation.safeargs.kotlin"
     id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -46,8 +48,8 @@ dependencies {
 
     // Kotlin
     implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0-native-mt'
 
     // Design
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -67,8 +69,8 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
 
     // Navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.4.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
 
     // Testing
     testImplementation 'junit:junit:4.13.2'
@@ -77,5 +79,14 @@ dependencies {
 
     // Timber Logging
     implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    // Permissions
+    implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
+
+    // Location
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
+
+    // Swipe Refresh layout
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
 }

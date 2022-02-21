@@ -5,6 +5,7 @@ import android.location.Geocoder
 import com.agaperra.weathertogether.data.api.dto.day_forecast.DayForecastResponse
 import com.agaperra.weathertogether.data.api.dto.week_forecast.Daily
 import com.agaperra.weathertogether.data.api.dto.week_forecast.ForecastResponse
+import com.agaperra.weathertogether.domain.interactor.WeatherBackgroundInteractor
 import com.agaperra.weathertogether.domain.interactor.WeatherIconsInteractor
 import com.agaperra.weathertogether.domain.interactor.WeatherStringsInteractor
 import com.agaperra.weathertogether.domain.model.ForecastDay
@@ -20,6 +21,7 @@ import javax.inject.Inject
 class DtoToDomain @Inject constructor(
     @ApplicationContext private val context: Context,
     private val weatherIconsInteractor: WeatherIconsInteractor,
+    private val weatherBackgroundInteractor: WeatherBackgroundInteractor,
     private val weatherStringsInteractor: WeatherStringsInteractor
 ) {
 
@@ -35,17 +37,19 @@ class DtoToDomain @Inject constructor(
 
     fun map(weekForecast: ForecastResponse) = WeatherForecast(
         location = getLocationName(lat = weekForecast.lat, lon = weekForecast.lon),
-        currentWeather = DOUBLE_NUMBERS_FORMAT.format(weekForecast.current.temp).addTempPrefix(),
-        currentWindSpeed = DOUBLE_NUMBERS_FORMAT.format(weekForecast.current.wind_speed),
-        currentHumidity = "${DOUBLE_NUMBERS_FORMAT.format(weekForecast.current.humidity)}%",
+        currentWeather = DOUBLE_NUMBERS_FORMAT.format(weekForecast.current.temp)
+            .addTempPrefix() + "°",
+        currentWindSpeed = DOUBLE_NUMBERS_FORMAT.format(weekForecast.current.wind_speed) + " " + weatherStringsInteractor.ms,
+        currentHumidity = "${DOUBLE_NUMBERS_FORMAT.format(weekForecast.current.humidity)} %",
+        currentPressure = DOUBLE_NUMBERS_FORMAT.format(weekForecast.current.pressure / 1.333) + " " + weatherStringsInteractor.mmHg,
         currentWeatherStatus = if (weekForecast.current.weather.isNotEmpty())
             weekForecast.current.weather[0].description.capitalize()
         else
             weatherStringsInteractor.unknown,
         currentWeatherStatusId = if (weekForecast.current.weather.isNotEmpty())
-            weekForecast.current.weather[0].id.toInt()
+            selectWeatherStatusBackground(weekForecast.current.weather[0].id.toInt())
         else
-            800,
+            selectWeatherStatusBackground(800),
         forecastDays = weekForecast.daily.map(),
     )
 
@@ -53,6 +57,7 @@ class DtoToDomain @Inject constructor(
         dayName = getTodayDate(),
         dayStatus = dayForecastResponse.weather.first().description,
         dayIcon = selectWeatherStatusIcon(dayForecastResponse.weather.first().id),
+        dayBackground = selectWeatherStatusBackground(dayForecastResponse.weather.first().id),
         dayTemp = DOUBLE_NUMBERS_FORMAT.format(dayForecastResponse.main.temp),
         dayPressure = DOUBLE_NUMBERS_FORMAT.format(dayForecastResponse.main.pressure / 1.333),
         dayHumidity = "${dayForecastResponse.main.humidity}%",
@@ -69,17 +74,18 @@ class DtoToDomain @Inject constructor(
             else
                 weatherStringsInteractor.unknown,
             dayTemp = if (day.weather.isNotEmpty())
-                DOUBLE_NUMBERS_FORMAT.format(day.temp.day).addTempPrefix()
+                DOUBLE_NUMBERS_FORMAT.format(day.temp.day).addTempPrefix() + "°"
             else
                 weatherStringsInteractor.unknown,
             dayStatusId = if (day.weather.isNotEmpty()) day.weather.first().id.toInt() else 800,
             sunrise = timeFormatter.format("${day.sunrise}000".toLong()),
             sunset = timeFormatter.format("${day.sunset}000".toLong()),
-            tempFeelsLike = DOUBLE_NUMBERS_FORMAT.format(day.feels_like.day).addTempPrefix(),
+            tempFeelsLike = DOUBLE_NUMBERS_FORMAT.format(day.feels_like.day).addTempPrefix() + "°",
             dayPressure = DOUBLE_NUMBERS_FORMAT.format(day.pressure / 1.333),
             dayHumidity = day.humidity.toString(),
             dayWindSpeed = day.wind_speed.toString(),
-            dayIcon = selectWeatherStatusIcon(day.weather.first().id.toInt())
+            dayIcon = selectWeatherStatusIcon(day.weather.first().id.toInt()),
+            dayBackground = selectWeatherStatusBackground(day.weather.first().id.toInt())
         )
     }
 
@@ -125,5 +131,15 @@ class DtoToDomain @Inject constructor(
         in Constants.drizzle_ids_range -> weatherIconsInteractor.drizzleIcon
         in Constants.thunderstorm_ids_range -> weatherIconsInteractor.thunderstormIcon
         else -> weatherIconsInteractor.sunIcon
+    }
+
+    private fun selectWeatherStatusBackground(weatherStatusId: Int) = when (weatherStatusId) {
+        in Constants.rain_ids_range -> weatherBackgroundInteractor.rainBackground
+        in Constants.clouds_ids_range -> weatherBackgroundInteractor.cloudsBackground
+        in Constants.atmosphere_ids_range -> weatherBackgroundInteractor.foggyBackground
+        in Constants.snow_ids_range -> weatherBackgroundInteractor.snowBackground
+        in Constants.drizzle_ids_range -> weatherBackgroundInteractor.drizzleBackground
+        in Constants.thunderstorm_ids_range -> weatherBackgroundInteractor.thunderstormBackground
+        else -> weatherBackgroundInteractor.sunBackground
     }
 }

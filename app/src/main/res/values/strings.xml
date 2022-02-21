@@ -4,4 +4,11 @@
     <string name="title_search">Fragment Search</string>
     <string name="today">Today</string>
     <string name="unknown">Unknown</string>
+    <string name="location_permission_denied">Location Permission denied</string>
+    <string name="exit_title">This application needs access to geolocation for further work</string>
+    <string name="just_updated">Just Updated</string>
+    <string name="updated_time">Updated %1$d minutes ago</string>
+    <string name="ms">m/s</string>
+    <string name="mmHg">mmHg</string>
+    <string name="error">An error has occurred, please try again later</string>
 </resources>

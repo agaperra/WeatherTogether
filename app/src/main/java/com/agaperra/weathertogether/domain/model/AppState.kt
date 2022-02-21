@@ -11,6 +11,5 @@ enum class ErrorState {
     NO_FORECAST_LOADED,
     NO_LOCATION_AVAILABLE,
     EMPTY_RESULT,
-    NO_SAVED_CITIES,
     BAD_REQUEST
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "983227308278",
+    "project_id": "weather-together-66222",
+    "storage_bucket": "weather-together-66222.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983227308278:android:410acfb479e049ce8474d7",
+        "android_client_info": {
+          "package_name": "com.agaperra.weathertogether"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983227308278-ab1c779f33chsvmp1fg3paq3719kpsc2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0QuyHx2963UXr1inPMx63awjGXL_Vu0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983227308278-ab1c779f33chsvmp1fg3paq3719kpsc2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

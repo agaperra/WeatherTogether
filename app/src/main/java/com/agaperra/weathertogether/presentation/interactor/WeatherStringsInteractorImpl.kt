@@ -15,4 +15,10 @@ class WeatherStringsInteractorImpl @Inject constructor(
 
     override val today: String
         get() = context.getString(R.string.today)
+
+    override val ms: String
+        get() = context.getString(R.string.ms)
+
+    override val mmHg: String
+        get() = context.getString(R.string.mmHg)
 }

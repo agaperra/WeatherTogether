@@ -2,6 +2,8 @@ package com.agaperra.weathertogether.utils
 
 object Constants {
 
+    const val REQUEST_CODE_PERMISSIONS = 101
+
     const val WEATHER_API_URL = "https://api.openweathermap.org"
     const val CITY_API_URL = "http://geodb-free-service.wirefreethought.com/"
 

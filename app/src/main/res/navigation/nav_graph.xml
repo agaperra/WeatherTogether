@@ -16,11 +16,12 @@
             app:destination="@id/fragment_search"
             app:enterAnim="@anim/slide_from_bottom"
             app:exitAnim="@anim/fragment_exit" />
+
     </fragment>
 
     <fragment
         android:id="@+id/fragment_search"
-        android:name="com.agaperra.weathertogether.presentation.ui.main.MainFragment"
+        android:name="com.agaperra.weathertogether.presentation.ui.search.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search">
     </fragment>
