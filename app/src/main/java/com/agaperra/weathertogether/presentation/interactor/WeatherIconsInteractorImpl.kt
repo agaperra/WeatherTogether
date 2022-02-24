@@ -13,7 +13,7 @@ class WeatherIconsInteractorImpl @Inject constructor() : WeatherIconsInteractor 
         get() = R.drawable.ic_drizzle
 
     override val foggyIcon: Int
-        get() = R.drawable.ic_windy
+        get() = R.drawable.ic_wind
 
     override val rainIcon: Int
         get() = R.drawable.ic_rainy

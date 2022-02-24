@@ -11,4 +11,5 @@
     <string name="ms">m/s</string>
     <string name="mmHg">mmHg</string>
     <string name="error">An error has occurred, please try again later</string>
+    <string name="tilda" translatable="false">~</string>
 </resources>

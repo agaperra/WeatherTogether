@@ -2,8 +2,9 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="140dp"
     android:layout_margin="10dp"
     app:cardCornerRadius="25dp">
 
@@ -16,20 +17,125 @@
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginStart="@dimen/margin_20dp"
             android:fontFamily="@font/raleway_regular"
-            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="17.02.2022" />
 
         <ImageView
+            android:id="@+id/icon"
             android:layout_width="64dp"
             android:layout_height="64dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/date"
             app:layout_constraintStart_toStartOf="@+id/date"
             app:layout_constraintTop_toBottomOf="@+id/date" />
+
+        <TextView
+            android:id="@+id/tempScore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:fontFamily="@font/raleway_regular"
+            android:textSize="@dimen/text_size_30sp"
+            app:layout_constraintStart_toEndOf="@+id/icon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="10°" />
+
+        <ImageView
+            android:id="@+id/icSunrise"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="@dimen/margin_20dp"
+            android:src="@drawable/ic_sunrise"
+            app:layout_constraintBottom_toBottomOf="@+id/tempScore"
+            app:layout_constraintStart_toEndOf="@id/tempScore"
+            app:layout_constraintTop_toBottomOf="@+id/tempScore" />
+
+        <TextView
+            android:id="@+id/sunrise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_10dp"
+            app:layout_constraintStart_toEndOf="@id/icSunrise"
+            app:layout_constraintTop_toTopOf="@id/icSunrise"
+            tools:text="10:00" />
+
+        <ImageView
+            android:id="@+id/icSunset"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="@dimen/margin_20dp"
+            android:src="@drawable/ic_sunset"
+            app:layout_constraintBottom_toBottomOf="@+id/sunrise"
+            app:layout_constraintStart_toEndOf="@+id/sunrise"
+            app:layout_constraintTop_toTopOf="@+id/sunrise" />
+
+        <TextView
+            android:id="@+id/sunset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_10dp"
+            app:layout_constraintStart_toEndOf="@id/icSunset"
+            app:layout_constraintTop_toTopOf="@id/icSunset"
+            tools:text="20:00" />
+
+        <ImageView
+            android:id="@+id/icHumidity"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_humidity"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/icSunrise"
+            app:layout_constraintTop_toBottomOf="@+id/icSunrise" />
+
+        <TextView
+            android:id="@+id/humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/icSunrise"
+            app:layout_constraintTop_toBottomOf="@+id/sunrise"
+            tools:text="85%" />
+
+        <ImageView
+            android:id="@+id/icPressure"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_pressure"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/icSunset"
+            app:layout_constraintTop_toBottomOf="@+id/icSunset" />
+
+        <TextView
+            android:id="@+id/pressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/sunset"
+            app:layout_constraintTop_toBottomOf="@+id/sunset"
+            tools:text="747 mmHg" />
+
+        <TextView
+            android:id="@+id/icTilda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tilda"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tempScore"
+            app:layout_constraintTop_toBottomOf="@+id/tempScore" />
+
+        <TextView
+            android:id="@+id/feelsLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tempScore"
+            app:layout_constraintTop_toBottomOf="@+id/tempScore"
+            tools:text="5°" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

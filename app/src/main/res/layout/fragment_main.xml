@@ -6,176 +6,181 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mainConstraint"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/progressBarMain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:visibility="invisible"
-            app:indicatorColor="@color/purple_500"
-            app:layout_constraintBottom_toTopOf="@+id/rvWeekForecast"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/progressBarDaily"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:visibility="invisible"
-            app:indicatorColor="@color/purple_500"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rvWeekForecast" />
-
-        <ImageView
-            android:id="@+id/icSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_10dp"
-            android:src="@drawable/ic_baseline_search_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/locationName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_5dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/raleway_regular"
-            android:maxLines="2"
-            android:textSize="@dimen/text_size_27sp"
-            app:layout_constraintEnd_toEndOf="@+id/icSearch"
-            app:layout_constraintStart_toStartOf="@+id/timeUpdated"
-            app:layout_constraintTop_toBottomOf="@+id/timeUpdated"
-            tools:text="Moscow" />
-
-        <TextView
-            android:id="@+id/statusName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_5dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/raleway_regular"
-            android:maxLines="2"
-            android:textSize="@dimen/text_size_20sp"
-            app:layout_constraintEnd_toEndOf="@+id/icSearch"
-            app:layout_constraintStart_toStartOf="@+id/timeUpdated"
-            app:layout_constraintTop_toBottomOf="@+id/locationName"
-            tools:text="Rainy" />
-
-        <TextView
-            android:id="@+id/tempScore"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_40dp"
-            android:layout_marginTop="@dimen/margin_80dp"
-            android:fontFamily="@font/raleway_regular"
-            android:textSize="@dimen/text_size_50sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="10°" />
-
-        <TextView
-            android:id="@+id/timeUpdated"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10dp"
-            android:fontFamily="@font/raleway_regular"
-            android:textSize="@dimen/text_size_15sp"
-            app:layout_constraintStart_toStartOf="@+id/tempScore"
-            app:layout_constraintTop_toBottomOf="@+id/tempScore"
-            tools:text="Just Updated" />
-
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/iconsGroup"
-            android:visibility="invisible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:constraint_referenced_ids = "icWind, icHumidity, icPressure"/>
-
-        <ImageView
-            android:id="@+id/icWind"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_20dp"
-            android:src="@drawable/ic_wind"
-            app:layout_constraintStart_toStartOf="@+id/statusName"
-            app:layout_constraintTop_toBottomOf="@+id/statusName" />
-
-        <TextView
-            android:id="@+id/windSpeed"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_10dp"
-            android:fontFamily="@font/raleway_regular"
-            android:textSize="@dimen/text_size_20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/icWind"
-            app:layout_constraintStart_toEndOf="@+id/icWind"
-            app:layout_constraintTop_toTopOf="@+id/icWind"
-            tools:text="10 m/s" />
-
-        <ImageView
-            android:id="@+id/icHumidity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10dp"
-            android:src="@drawable/ic_humidity"
-            app:layout_constraintStart_toStartOf="@+id/statusName"
-            app:layout_constraintTop_toBottomOf="@+id/icWind" />
-
-        <TextView
-            android:id="@+id/humidityScore"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway_regular"
-            android:textSize="@dimen/text_size_20sp"
-            app:layout_constraintBottom_toTopOf="@+id/icPressure"
-            app:layout_constraintEnd_toEndOf="@+id/windSpeed"
-            app:layout_constraintStart_toStartOf="@+id/windSpeed"
-            app:layout_constraintTop_toBottomOf="@+id/windSpeed"
-            tools:text="78%" />
-
-        <ImageView
-            android:id="@+id/icPressure"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10dp"
-            android:src="@drawable/ic_pressure"
-            app:layout_constraintStart_toStartOf="@+id/statusName"
-            app:layout_constraintTop_toBottomOf="@+id/icHumidity" />
-
-        <TextView
-            android:id="@+id/pressureScore"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway_regular"
-            android:textSize="@dimen/text_size_20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/icPressure"
-            app:layout_constraintStart_toStartOf="@+id/windSpeed"
-            app:layout_constraintTop_toTopOf="@+id/icPressure"
-            tools:text="747 mmHg" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvWeekForecast"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mainConstraint"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_20dp"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/icPressure"
-            tools:listitem="@layout/item_daily" />
+            android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progressBarMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:visibility="invisible"
+                app:indicatorColor="@color/purple_500"
+                app:layout_constraintBottom_toTopOf="@+id/rvWeekForecast"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progressBarDaily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:visibility="invisible"
+                app:indicatorColor="@color/purple_500"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/rvWeekForecast" />
+
+            <ImageView
+                android:id="@+id/icSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_10dp"
+                android:src="@drawable/ic_baseline_search_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/locationName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/raleway_regular"
+                android:maxLines="2"
+                android:textSize="@dimen/text_size_27sp"
+                app:layout_constraintEnd_toEndOf="@+id/icSearch"
+                app:layout_constraintStart_toStartOf="@+id/timeUpdated"
+                app:layout_constraintTop_toBottomOf="@+id/timeUpdated"
+                tools:text="Moscow" />
+
+            <TextView
+                android:id="@+id/statusName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/raleway_regular"
+                android:maxLines="2"
+                android:textSize="@dimen/text_size_20sp"
+                app:layout_constraintEnd_toEndOf="@+id/icSearch"
+                app:layout_constraintStart_toStartOf="@+id/timeUpdated"
+                app:layout_constraintTop_toBottomOf="@+id/locationName"
+                tools:text="Rainy" />
+
+            <TextView
+                android:id="@+id/tempScore"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:layout_marginStart="@dimen/margin_40dp"
+                android:fontFamily="@font/raleway_regular"
+                android:textSize="@dimen/text_size_50sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/icSearch"
+                tools:text="10°" />
+
+            <TextView
+                android:id="@+id/timeUpdated"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:fontFamily="@font/raleway_regular"
+                android:textSize="@dimen/text_size_15sp"
+                app:layout_constraintStart_toStartOf="@+id/tempScore"
+                app:layout_constraintTop_toBottomOf="@+id/tempScore"
+                tools:text="Just Updated" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/iconsGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="icWind, icHumidity, icPressure" />
+
+            <ImageView
+                android:id="@+id/icWind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:src="@drawable/ic_wind"
+                app:layout_constraintStart_toStartOf="@+id/statusName"
+                app:layout_constraintTop_toBottomOf="@+id/statusName" />
+
+            <TextView
+                android:id="@+id/windSpeed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_10dp"
+                android:fontFamily="@font/raleway_regular"
+                android:textSize="@dimen/text_size_20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/icWind"
+                app:layout_constraintStart_toEndOf="@+id/icWind"
+                app:layout_constraintTop_toTopOf="@+id/icWind"
+                tools:text="10 m/s" />
+
+            <ImageView
+                android:id="@+id/icHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:src="@drawable/ic_humidity"
+                app:layout_constraintStart_toStartOf="@+id/statusName"
+                app:layout_constraintTop_toBottomOf="@+id/icWind" />
+
+            <TextView
+                android:id="@+id/humidityScore"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_regular"
+                android:textSize="@dimen/text_size_20sp"
+                app:layout_constraintBottom_toTopOf="@+id/icPressure"
+                app:layout_constraintEnd_toEndOf="@+id/windSpeed"
+                app:layout_constraintStart_toStartOf="@+id/windSpeed"
+                app:layout_constraintTop_toBottomOf="@+id/windSpeed"
+                tools:text="78%" />
+
+            <ImageView
+                android:id="@+id/icPressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:src="@drawable/ic_pressure"
+                app:layout_constraintStart_toStartOf="@+id/statusName"
+                app:layout_constraintTop_toBottomOf="@+id/icHumidity" />
+
+            <TextView
+                android:id="@+id/pressureScore"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_regular"
+                android:textSize="@dimen/text_size_20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/icPressure"
+                app:layout_constraintStart_toStartOf="@+id/windSpeed"
+                app:layout_constraintTop_toTopOf="@+id/icPressure"
+                tools:text="747 mmHg" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvWeekForecast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_20dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/icPressure"
+                tools:listitem="@layout/item_daily" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

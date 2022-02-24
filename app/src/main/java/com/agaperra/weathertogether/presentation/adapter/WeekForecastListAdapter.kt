@@ -19,9 +19,18 @@ class WeekForecastListAdapter(val context: Context?) :
 
             val dailyForecast = getItem(itemPosition)
 
+            binding.icon.setImageResource(dailyForecast.dayIcon)
+            binding.parentLayout.setBackgroundResource(dailyForecast.dayBackground)
+
+            binding.date.text = dailyForecast.dayName
+            binding.tempScore.text = dailyForecast.dayTemp
+            binding.sunrise.text = dailyForecast.sunrise
+            binding.sunset.text = dailyForecast.sunset
+            binding.humidity.text = dailyForecast.dayHumidity
+            binding.pressure.text = dailyForecast.dayPressure
+            binding.feelsLike.text = dailyForecast.tempFeelsLike
+
         }
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =

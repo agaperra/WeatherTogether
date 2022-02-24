@@ -73,6 +73,7 @@ class MainFragment : Fragment(R.layout.fragment_main), EasyPermissions.Permissio
             requireView().findNavController()
                 .navigate(MainFragmentDirections.openSearch())
         }
+        binding.rvWeekForecast.adapter = weekForecastListAdapter
     }
 
     private fun setResult(result: AppState<WeatherForecast>) {
