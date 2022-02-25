@@ -2,12 +2,14 @@ package com.agaperra.weathertogether.data.api.mapper
 
 import android.content.Context
 import android.location.Geocoder
+import com.agaperra.weathertogether.data.api.dto.city_search.CitiesResponse
 import com.agaperra.weathertogether.data.api.dto.day_forecast.DayForecastResponse
 import com.agaperra.weathertogether.data.api.dto.week_forecast.Daily
 import com.agaperra.weathertogether.data.api.dto.week_forecast.ForecastResponse
 import com.agaperra.weathertogether.domain.interactor.WeatherBackgroundInteractor
 import com.agaperra.weathertogether.domain.interactor.WeatherIconsInteractor
 import com.agaperra.weathertogether.domain.interactor.WeatherStringsInteractor
+import com.agaperra.weathertogether.domain.model.CityItem
 import com.agaperra.weathertogether.domain.model.ForecastDay
 import com.agaperra.weathertogether.domain.model.WeatherForecast
 import com.agaperra.weathertogether.utils.Constants
@@ -41,7 +43,7 @@ class DtoToDomain @Inject constructor(
             .addTempPrefix() + "°",
         currentWindSpeed = DOUBLE_NUMBERS_FORMAT.format(weekForecast.current.wind_speed) + " " + weatherStringsInteractor.ms,
         currentHumidity = "${DOUBLE_NUMBERS_FORMAT.format(weekForecast.current.humidity)} %",
-        currentPressure = DOUBLE_NUMBERS_FORMAT.format(weekForecast.current.pressure / 1.333) + " " + weatherStringsInteractor.mmHg,
+        currentPressure = DOUBLE_NUMBERS_FORMAT.format(weekForecast.current.pressure / 1.333) + "\n" + weatherStringsInteractor.mmHg,
         currentWeatherStatus = if (weekForecast.current.weather.isNotEmpty())
             weekForecast.current.weather[0].description.capitalize()
         else
@@ -58,10 +60,11 @@ class DtoToDomain @Inject constructor(
         dayStatus = dayForecastResponse.weather.first().description,
         dayIcon = selectWeatherStatusIcon(dayForecastResponse.weather.first().id),
         dayBackground = selectWeatherStatusBackground(dayForecastResponse.weather.first().id),
-        dayTemp = DOUBLE_NUMBERS_FORMAT.format(dayForecastResponse.main.temp),
-        dayPressure = DOUBLE_NUMBERS_FORMAT.format(dayForecastResponse.main.pressure / 1.333),
+        dayTemp = DOUBLE_NUMBERS_FORMAT.format(dayForecastResponse.main.temp).addTempPrefix()+ "°",
+        dayPressure = DOUBLE_NUMBERS_FORMAT.format(dayForecastResponse.main.pressure / 1.333) + "\n" + weatherStringsInteractor.mmHg,
         dayHumidity = "${dayForecastResponse.main.humidity}%",
-        dayWindSpeed = DOUBLE_NUMBERS_FORMAT.format(dayForecastResponse.wind.speed),
+        tempFeelsLike = DOUBLE_NUMBERS_FORMAT.format(dayForecastResponse.main.feelsLike).addTempPrefix()+ "°",
+        dayWindSpeed = DOUBLE_NUMBERS_FORMAT.format(dayForecastResponse.wind.speed) + " " + weatherStringsInteractor.ms,
         sunrise = timeFormatter.format("${dayForecastResponse.sys.sunrise}000".toLong()),
         sunset = timeFormatter.format("${dayForecastResponse.sys.sunset}000".toLong())
     )
@@ -81,9 +84,9 @@ class DtoToDomain @Inject constructor(
             sunrise = timeFormatter.format("${day.sunrise}000".toLong()),
             sunset = timeFormatter.format("${day.sunset}000".toLong()),
             tempFeelsLike = DOUBLE_NUMBERS_FORMAT.format(day.feels_like.day).addTempPrefix() + "°",
-            dayPressure = DOUBLE_NUMBERS_FORMAT.format(day.pressure / 1.333),
-            dayHumidity = day.humidity.toString(),
-            dayWindSpeed = day.wind_speed.toString(),
+            dayPressure = DOUBLE_NUMBERS_FORMAT.format(day.pressure / 1.333)+ "\n" + weatherStringsInteractor.mmHg,
+            dayHumidity = day.humidity.toString() + " %",
+            dayWindSpeed = day.wind_speed.toString() + " " + weatherStringsInteractor.ms,
             dayIcon = selectWeatherStatusIcon(day.weather.first().id.toInt()),
             dayBackground = selectWeatherStatusBackground(day.weather.first().id.toInt())
         )
@@ -143,3 +146,12 @@ class DtoToDomain @Inject constructor(
         else -> weatherBackgroundInteractor.sunBackground
     }
 }
+
+
+fun CitiesResponse.toDomain(): List<CityItem> = data.map { city ->
+    CityItem(
+        name = "${city.name}, ${city.country}",
+        longitude = city.longitude,
+        latitude = city.latitude
+    )
+}.distinctBy { it.name }

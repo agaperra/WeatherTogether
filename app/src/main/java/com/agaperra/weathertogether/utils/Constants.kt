@@ -4,6 +4,8 @@ object Constants {
 
     const val REQUEST_CODE_PERMISSIONS = 101
 
+    const val CITY_CARD_ANIMATION_DURATION = 300L
+
     const val WEATHER_API_URL = "https://api.openweathermap.org"
     const val CITY_API_URL = "http://geodb-free-service.wirefreethought.com/"
 

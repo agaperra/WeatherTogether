@@ -1,7 +1,9 @@
 package com.agaperra.weathertogether.presentation.di
 
 import android.content.Context
+import com.agaperra.weathertogether.data.api.CityApi
 import com.agaperra.weathertogether.data.api.WeatherApi
+import com.agaperra.weathertogether.utils.Constants.CITY_API_URL
 import com.agaperra.weathertogether.utils.Constants.WEATHER_API_URL
 import com.agaperra.weathertogether.utils.network.NetworkStatusListener
 import dagger.Module
@@ -37,6 +39,15 @@ object NetworkModule {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(WeatherApi::class.java)
+
+    @Singleton
+    @Provides
+    fun provideCityApiService(client: OkHttpClient): CityApi = Retrofit.Builder()
+        .client(client)
+        .baseUrl(CITY_API_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(CityApi::class.java)
 
 
     @ExperimentalCoroutinesApi

@@ -1,4 +1,4 @@
-package com.agaperra.weathertogether.presentation.adapter
+package com.agaperra.weathertogether.presentation.adapter.weather
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,8 +9,10 @@ import com.agaperra.weathertogether.R
 import com.agaperra.weathertogether.databinding.ItemDailyBinding
 import com.agaperra.weathertogether.domain.model.ForecastDay
 
-class WeekForecastListAdapter(val context: Context?) :
-    ListAdapter<ForecastDay, WeekForecastListAdapter.WeekForecastListViewHolder>(WeekForecastDiffUtil()) {
+class WeekForecastListAdapter() :
+    ListAdapter<ForecastDay, WeekForecastListAdapter.WeekForecastListViewHolder>(
+        WeekForecastDiffUtil()
+    ) {
 
     inner class WeekForecastListViewHolder(private val binding: ItemDailyBinding) :
         RecyclerView.ViewHolder(binding.root) {

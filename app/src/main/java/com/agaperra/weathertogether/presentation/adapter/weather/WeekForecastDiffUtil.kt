@@ -1,4 +1,4 @@
-package com.agaperra.weathertogether.presentation.adapter
+package com.agaperra.weathertogether.presentation.adapter.weather
 
 import androidx.recyclerview.widget.DiffUtil
 import com.agaperra.weathertogether.domain.model.ForecastDay

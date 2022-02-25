@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">WeatherTogether</string>
     <string name="title_main">Main Fragment</string>
-    <string name="title_search">Fragment Search</string>
+    <string name="title_search">Поиск городов</string>
     <string name="today">Сегодня</string>
     <string name="unknown">Неизвестно</string>
     <string name="location_permission_denied">Отказано в разрешении на местоположение</string>
@@ -12,4 +12,5 @@
     <string name="ms">м/с</string>
     <string name="mmHg">мм.рт.ст.</string>
     <string name="error">Произошла ошибка, пожалуйста, повторите попытку позже</string>
+    <string name="loading">Погода загружается…</string>
 </resources>

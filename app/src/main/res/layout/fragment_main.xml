@@ -130,7 +130,7 @@
                 android:id="@+id/icHumidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_10dp"
+                android:layout_marginTop="@dimen/margin_20dp"
                 android:src="@drawable/ic_humidity"
                 app:layout_constraintStart_toStartOf="@+id/statusName"
                 app:layout_constraintTop_toBottomOf="@+id/icWind" />
@@ -151,7 +151,7 @@
                 android:id="@+id/icPressure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_10dp"
+                android:layout_marginTop="@dimen/margin_20dp"
                 android:src="@drawable/ic_pressure"
                 app:layout_constraintStart_toStartOf="@+id/statusName"
                 app:layout_constraintTop_toBottomOf="@+id/icHumidity" />

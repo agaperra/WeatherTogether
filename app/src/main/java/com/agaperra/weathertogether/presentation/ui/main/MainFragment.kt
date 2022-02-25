@@ -1,14 +1,12 @@
 package com.agaperra.weathertogether.presentation.ui.main
 
 import android.Manifest
-import android.content.pm.PackageManager
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -18,13 +16,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.agaperra.weathertogether.R
 import com.agaperra.weathertogether.databinding.FragmentMainBinding
 import com.agaperra.weathertogether.domain.model.AppState
-import com.agaperra.weathertogether.domain.model.ForecastDay
 import com.agaperra.weathertogether.domain.model.WeatherForecast
-import com.agaperra.weathertogether.presentation.adapter.WeekForecastListAdapter
+import com.agaperra.weathertogether.presentation.adapter.weather.WeekForecastListAdapter
 import com.agaperra.weathertogether.utils.Constants.REQUEST_CODE_PERMISSIONS
 import com.agaperra.weathertogether.utils.SnackBarMaker
 import com.agaperra.weathertogether.utils.launchWhenStarted
-import com.google.android.gms.location.LocationServices
 import com.google.android.material.snackbar.Snackbar
 import com.vmadalin.easypermissions.EasyPermissions
 import com.vmadalin.easypermissions.dialogs.SettingsDialog
@@ -32,7 +28,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.onEach
-import java.util.Arrays.toString
 
 @AndroidEntryPoint
 @ExperimentalCoroutinesApi
@@ -44,7 +39,7 @@ class MainFragment : Fragment(R.layout.fragment_main), EasyPermissions.Permissio
     private val binding get() = _binding!!
 
     private val weekForecastListAdapter by lazy(LazyThreadSafetyMode.NONE) {
-        WeekForecastListAdapter(requireContext())
+        WeekForecastListAdapter()
     }
 
 

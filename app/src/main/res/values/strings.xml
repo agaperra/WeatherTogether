@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">WeatherTogether</string>
     <string name="title_main">Main Fragment</string>
-    <string name="title_search">Fragment Search</string>
+    <string name="title_search">Cities Search</string>
     <string name="today">Today</string>
     <string name="unknown">Unknown</string>
     <string name="location_permission_denied">Location Permission denied</string>
@@ -12,4 +12,5 @@
     <string name="mmHg">mmHg</string>
     <string name="error">An error has occurred, please try again later</string>
     <string name="tilda" translatable="false">~</string>
+    <string name="loading">Content is loading…</string>
 </resources>
