@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WeatherTogether</string>
+    <string name="title_main">Main Fragment</string>
+    <string name="title_search">Поиск городов</string>
+    <string name="today">Сегодня</string>
+    <string name="unknown">Неизвестно</string>
+    <string name="location_permission_denied">Отказано в разрешении на местоположение</string>
+    <string name="exit_title">Этому приложению необходим доступ к геолокации для дальнейшей работы</string>
+    <string name="just_updated">Обновлено только что</string>
+    <string name="updated_time">Обновлено %1$d минут назад</string>
+    <string name="ms">м/с</string>
+    <string name="mmHg">мм.рт.ст.</string>
+    <string name="error">Произошла ошибка, пожалуйста, повторите попытку позже</string>
+    <string name="loading">Погода загружается…</string>
+</resources>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardCity"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="#756666"
+    app:cardCornerRadius="25dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/bigExpandedGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="weatherLayout" />
+
+        <TextView
+            android:id="@+id/cityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_20dp"
+            android:fontFamily="@font/raleway_regular"
+            android:textSize="@dimen/text_size_20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Москва" />
+
+        <TextView
+            android:id="@+id/cityLatLon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_20dp"
+            android:fontFamily="@font/raleway_regular"
+            android:textSize="@dimen/text_size_20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cityName"
+            tools:text="33° 64°" />
+
+        <ImageView
+            android:id="@+id/arrowDownUp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="@dimen/margin_20dp"
+            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/weatherLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cityLatLon">
+
+
+
+            <TextView
+                android:id="@+id/dateDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_20dp"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:fontFamily="@font/raleway_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="17.02.2022" />
+
+            <ImageView
+                android:id="@+id/iconDay"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/dateDay"
+                app:layout_constraintTop_toBottomOf="@+id/dateDay" />
+
+            <TextView
+                android:id="@+id/tempScoreDay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_20dp"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:fontFamily="@font/raleway_regular"
+                android:textSize="@dimen/text_size_30sp"
+                app:layout_constraintStart_toEndOf="@+id/iconDay"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="10°" />
+
+            <ImageView
+                android:id="@+id/icSunriseDay"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/margin_20dp"
+                android:src="@drawable/ic_sunrise"
+                app:layout_constraintBottom_toBottomOf="@+id/tempScoreDay"
+                app:layout_constraintStart_toEndOf="@id/tempScoreDay"
+                app:layout_constraintTop_toBottomOf="@+id/tempScoreDay" />
+
+            <TextView
+                android:id="@+id/sunriseDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_10dp"
+                android:fontFamily="@font/raleway_regular"
+                app:layout_constraintStart_toEndOf="@id/icSunriseDay"
+                app:layout_constraintTop_toTopOf="@id/icSunriseDay"
+                tools:text="10:00" />
+
+            <ImageView
+                android:id="@+id/icSunsetDay"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/margin_20dp"
+                android:src="@drawable/ic_sunset"
+                app:layout_constraintBottom_toBottomOf="@+id/sunriseDay"
+                app:layout_constraintStart_toEndOf="@+id/sunriseDay"
+                app:layout_constraintTop_toTopOf="@+id/sunriseDay" />
+
+            <TextView
+                android:id="@+id/sunsetDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_10dp"
+                android:fontFamily="@font/raleway_regular"
+                app:layout_constraintStart_toEndOf="@id/icSunsetDay"
+                app:layout_constraintTop_toTopOf="@id/icSunsetDay"
+                tools:text="20:00" />
+
+            <ImageView
+                android:id="@+id/icHumidityDay"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_humidity"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/icSunriseDay"
+                app:layout_constraintTop_toBottomOf="@+id/icSunriseDay" />
+
+            <TextView
+                android:id="@+id/humidityDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_10dp"
+                android:fontFamily="@font/raleway_regular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/icSunriseDay"
+                app:layout_constraintTop_toBottomOf="@+id/sunriseDay"
+                tools:text="85%" />
+
+            <ImageView
+                android:id="@+id/icPressureDay"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_pressure"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/icSunsetDay"
+                app:layout_constraintTop_toBottomOf="@+id/icSunsetDay" />
+
+            <TextView
+                android:id="@+id/pressureDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_regular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/sunsetDay"
+                app:layout_constraintTop_toBottomOf="@+id/sunsetDay"
+                tools:text="747 mmHg" />
+
+            <TextView
+                android:id="@+id/icTildaDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_regular"
+                android:text="@string/tilda"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tempScoreDay"
+                app:layout_constraintTop_toBottomOf="@+id/tempScoreDay" />
+
+            <TextView
+                android:id="@+id/feelsLikeDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_regular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tempScoreDay"
+                app:layout_constraintTop_toBottomOf="@+id/tempScoreDay"
+                tools:text="5°" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
